@@ -1,4 +1,23 @@
-export default function UrbanDawnUI() {
+'use client';
+
+import Link from 'next/link';
+
+interface NavPage {
+  name: string;
+  href: string;
+}
+
+interface UrbanDawnUIProps {
+  pages?: NavPage[];
+}
+
+export default function UrbanDawnUI({ pages }: UrbanDawnUIProps) {
+  const defaultPages: NavPage[] = [
+    { name: 'Leaderboard', href: '/leaderboard' },
+  ];
+
+  const navPages = pages || defaultPages;
+
   return (
     <div className="w-[1440px] h-[1024px] relative overflow-hidden">
       <div className="left-[369px] top-[342px] absolute justify-start text-white text-9xl font-medium font-['Ubuntu_Sans_Mono']">
@@ -7,23 +26,37 @@ export default function UrbanDawnUI() {
       <div className="w-[1440px] h-7 left-[3px] top-[997px] absolute bg-black" />
       
       {/* Stats Button */}
-      <div className="w-36 h-16 left-[890px] top-[899px] absolute">
-        <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
-        <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
-          Stats
+      <Link href="/stats">
+        <div className="w-36 h-16 left-[890px] top-[899px] absolute cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
+          <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
+            Stats
+          </div>
         </div>
-      </div>
+      </Link>
       
-      {/* Links Button */}
-      <div className="w-36 h-16 left-[436px] top-[899px] absolute">
-        <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
-        <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
-          Links
-        </div>
-      </div>
+      {/* Dynamic Navigation Buttons */}
+      {navPages.map((page, index) => {
+        const leftPositions = [436, 614]; // Left and Achievements positions
+        return (
+          <Link key={page.name} href={page.href}>
+            <div
+              className="w-36 h-16 absolute cursor-pointer hover:opacity-80 transition-opacity"
+              style={{ left: `${leftPositions[index % 2]}px`, top: '899px' }}
+            >
+              <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
+              <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
+                {page.name}
+              </div>
+            </div>
+          </Link>
+        );
+      })}
       
       {/* Achievements Button */}
-      <div className="w-60 h-16 left-[614px] top-[899px] absolute bg-neutral-400 rounded-lg" />
+      <Link href="/achievements">
+        <div className="w-60 h-16 left-[614px] top-[899px] absolute bg-neutral-400 rounded-lg cursor-pointer hover:opacity-80 transition-opacity" />
+      </Link>
       <div className="left-[628px] top-[915px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
         Achievements
       </div>
