@@ -88,12 +88,14 @@ export default function UrbanDawnUI() {
       </Link>
       
       {/* Depot */}
-      <div data-property-1="Default" className="w-72 h-20 left-[914px] top-[540px] absolute">
-        <div className="w-72 h-20 left-0 top-0 absolute bg-indigo-950 rounded" />
-        <div className="left-[82px] top-[13px] absolute justify-start text-white text-5xl font-normal font-['Instrument_Sans']">
-          Depot
+      <Link href="/depot">
+        <div data-property-1="Default" className="w-72 h-20 left-[914px] top-[540px] absolute cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="w-72 h-20 left-0 top-0 absolute bg-indigo-950 rounded" />
+          <div className="left-[82px] top-[13px] absolute justify-start text-white text-5xl font-normal font-['Instrument_Sans']">
+            Depot
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
