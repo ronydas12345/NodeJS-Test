@@ -2,22 +2,7 @@
 
 import Link from 'next/link';
 
-interface NavPage {
-  name: string;
-  href: string;
-}
-
-interface UrbanDawnUIProps {
-  pages?: NavPage[];
-}
-
-export default function UrbanDawnUI({ pages }: UrbanDawnUIProps) {
-  const defaultPages: NavPage[] = [
-    { name: 'Leaderboard', href: '/leaderboard' },
-  ];
-
-  const navPages = pages || defaultPages;
-
+export default function UrbanDawnUI() {
   return (
     <div className="w-[1440px] h-[1024px] relative overflow-hidden">
       <div className="left-[369px] top-[342px] absolute justify-start text-white text-9xl font-medium font-['Ubuntu_Sans_Mono']">
@@ -35,23 +20,15 @@ export default function UrbanDawnUI({ pages }: UrbanDawnUIProps) {
         </div>
       </Link>
       
-      {/* Dynamic Navigation Buttons */}
-      {navPages.map((page, index) => {
-        const leftPositions = [436, 614]; // Left and Achievements positions
-        return (
-          <Link key={page.name} href={page.href}>
-            <div
-              className="w-36 h-16 absolute cursor-pointer hover:opacity-80 transition-opacity"
-              style={{ left: `${leftPositions[index % 2]}px`, top: '899px' }}
-            >
-              <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
-              <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
-                {page.name}
-              </div>
-            </div>
-          </Link>
-        );
-      })}
+      {/* Links Button (Socials) */}
+      <Link href="/links">
+        <div className="w-36 h-16 left-[436px] top-[899px] absolute cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="w-36 h-16 left-0 top-0 absolute bg-neutral-400 rounded-lg" />
+          <div className="left-[32px] top-[16px] absolute justify-start text-black text-3xl font-normal font-['Inter']">
+            Links
+          </div>
+        </div>
+      </Link>
       
       {/* Achievements Button */}
       <Link href="/achievements">
@@ -98,6 +75,13 @@ export default function UrbanDawnUI({ pages }: UrbanDawnUIProps) {
         <div className="w-14 h-14 relative overflow-hidden">
           <div className="w-11 h-11 left-[4.31px] top-[4.42px] absolute bg-slate-700" />
         </div>
+
+        {/* Leaderboard Link */}
+        <Link href="/leaderboard">
+          <button className="ml-12 px-6 py-3 bg-indigo-950 text-white text-2xl font-normal rounded hover:opacity-80 transition-opacity">
+            Leaderboard
+          </button>
+        </Link>
       </div>
       
       {/* Leaderboard */}
