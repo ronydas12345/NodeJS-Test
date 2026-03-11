@@ -75,22 +75,17 @@ export default function UrbanDawnUI() {
         <div className="w-14 h-14 relative overflow-hidden">
           <div className="w-11 h-11 left-[4.31px] top-[4.42px] absolute bg-slate-700" />
         </div>
-
-        {/* Leaderboard Link */}
-        <Link href="/leaderboard">
-          <button className="ml-12 px-6 py-3 bg-indigo-950 text-white text-2xl font-normal rounded hover:opacity-80 transition-opacity">
-            Leaderboard
-          </button>
-        </Link>
       </div>
       
       {/* Leaderboard */}
-      <div data-property-1="Default" className="w-72 h-20 left-[210px] top-[540px] absolute">
-        <div className="w-72 h-20 left-0 top-0 absolute bg-indigo-950 rounded" />
-        <div className="left-[10px] top-[13px] absolute justify-start text-white text-5xl font-normal font-['Instrument_Sans']">
-          Leaderboard
+      <Link href="/leaderboard">
+        <div data-property-1="Default" className="w-72 h-20 left-[210px] top-[540px] absolute cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="w-72 h-20 left-0 top-0 absolute bg-indigo-950 rounded" />
+          <div className="left-[10px] top-[13px] absolute justify-start text-white text-5xl font-normal font-['Instrument_Sans']">
+            Leaderboard
+          </div>
         </div>
-      </div>
+      </Link>
       
       {/* Depot */}
       <div data-property-1="Default" className="w-72 h-20 left-[914px] top-[540px] absolute">
